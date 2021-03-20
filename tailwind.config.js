@@ -3,7 +3,7 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   purge: {
-    content: './src/**/*.{js,ts,jsx,tsx}',
+    content: ['./src/**/*.{js,ts,jsx,tsx}'],
     options: {
       whitelist: [
         'grid-cols-0',
