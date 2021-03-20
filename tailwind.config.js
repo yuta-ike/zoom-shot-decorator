@@ -25,6 +25,7 @@ module.exports = {
         'grid-rows-14',
         'grid-rows-16',
       ],
+      whitelistPatterns: [/^grid-cols-/, /^grid-rows-/],
     },
   },
   darkMode: false, // or 'media' or 'class'
