@@ -26,6 +26,34 @@ const Index: React.FC = () => {
         >
           <GridGuideFrame count={9} />
         </Rnd> */}
+        <div className="grid-cols-1" />
+        <div className="grid-cols-2" />
+        <div className="grid-cols-3" />
+        <div className="grid-cols-4" />
+        <div className="grid-cols-5" />
+        <div className="grid-cols-6" />
+        <div className="grid-cols-7" />
+        <div className="grid-cols-8" />
+        <div className="grid-cols-9" />
+        <div className="grid-cols-10" />
+        <div className="grid-cols-11" />
+        <div className="grid-cols-12" />
+        <div className="grid-cols-13" />
+        <div className="grid-cols-14" />
+        <div className="grid-rows-1" />
+        <div className="grid-rows-2" />
+        <div className="grid-rows-3" />
+        <div className="grid-rows-4" />
+        <div className="grid-rows-5" />
+        <div className="grid-rows-6" />
+        <div className="grid-rows-7" />
+        <div className="grid-rows-8" />
+        <div className="grid-rows-9" />
+        <div className="grid-rows-10" />
+        <div className="grid-rows-11" />
+        <div className="grid-rows-12" />
+        <div className="grid-rows-13" />
+        <div className="grid-rows-14" />
       </div>
     </div>
   )
