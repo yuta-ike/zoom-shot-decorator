@@ -2,7 +2,31 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
-  purge: ['./src/**/*.{js,ts,jsx,tsx}'],
+  purge: {
+    content: './src/**/*.{js,ts,jsx,tsx}',
+    options: {
+      whitelist: [
+        'grid-cols-0',
+        'grid-cols-2',
+        'grid-cols-4',
+        'grid-cols-6',
+        'grid-cols-8',
+        'grid-cols-10',
+        'grid-cols-12',
+        'grid-cols-14',
+        'grid-cols-16',
+        'grid-rows-0',
+        'grid-rows-2',
+        'grid-rows-4',
+        'grid-rows-6',
+        'grid-rows-8',
+        'grid-rows-10',
+        'grid-rows-12',
+        'grid-rows-14',
+        'grid-rows-16',
+      ],
+    },
+  },
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
