@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  button:focus {
+    @apply outline-none;
+  }
+  button:focus-visible {
+    @apply outline-black;
+  }
+  button:disabled {
+    @apply cursor-default;
+  }
+}
+
+.scrollbar-none {
+  -ms-overflow-style: none; /* IE, Edge 対応 */
+  scrollbar-width: none; /* Firefox 対応 */
+}
+.scrollbar-none::-webkit-scrollbar {
+  /* Chrome, Safari 対応 */
+  display: none;
+}
+
+.chrome-picker {
+  box-shadow: none !important;
+}
