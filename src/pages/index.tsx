@@ -54,6 +54,20 @@ const Index: React.FC = () => {
         <div className="grid-rows-12" />
         <div className="grid-rows-13" />
         <div className="grid-rows-14" />
+        <div className="col-start-1" />
+        <div className="col-start-2" />
+        <div className="col-start-3" />
+        <div className="col-start-4" />
+        <div className="col-start-5" />
+        <div className="col-start-6" />
+        <div className="col-start-7" />
+        <div className="col-start-8" />
+        <div className="col-start-9" />
+        <div className="col-start-10" />
+        <div className="col-start-11" />
+        <div className="col-start-12" />
+        <div className="col-start-13" />
+        <div className="col-start-14" />
       </div>
     </div>
   )
