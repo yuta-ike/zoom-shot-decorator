@@ -11,16 +11,6 @@ const BG_LIST: BgImg[] = [
     name: 'おんせん',
     type: 'template',
   },
-  {
-    src: '/bg/img3.png',
-    name: 'コルクボード',
-    type: 'template',
-  },
-  {
-    src: '/bg/img4.png',
-    name: 'アナログテレビ',
-    type: 'template',
-  },
 ]
 
 export default BG_LIST

@@ -20,7 +20,7 @@ const Upload: React.FC<Props> = ({ className, file, onChangeFile, goNext }) => {
         <input
           type="file"
           className="w-1 h-1 opacity-0 absolute"
-          accept="image/png"
+          accept="image/*"
           required
           onChange={(e) => onChangeFile(e.target.files?.[0] ?? null)}
         />

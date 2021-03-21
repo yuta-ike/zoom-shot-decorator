@@ -19,12 +19,12 @@ const postShotData = async (
       headers: {
         'Content-Type': 'multipart/form-data',
         'Access-Control-Allow-Origin': '*',
-        // ...(formData as any).getHeaders(),
       },
     },
   )
 
-  console.log(res)
+  const images: string[] = res.data.result.image
+  return images
 }
 
 export default postShotData

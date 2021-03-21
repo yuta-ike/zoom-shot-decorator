@@ -6,13 +6,13 @@ const zoomFrame: Record<number, [number, number][]> = {
     [2, 1],
   ],
   3: [
-    [3, 1],
     [2, 2],
+    [3, 1],
   ],
   4: [[2, 2]],
   5: [
-    [2, 3],
     [3, 2],
+    [2, 3],
   ],
   6: [
     [2, 3],
@@ -40,16 +40,16 @@ const zoomFrame: Record<number, [number, number][]> = {
     [3, 4],
   ],
   13: [
-    [5, 3],
     [4, 4],
+    [5, 3],
   ],
   14: [
-    [5, 3],
     [4, 4],
+    [5, 3],
   ],
   15: [
-    [5, 3],
     [4, 4],
+    [5, 3],
   ],
   16: [[4, 4]],
   17: [
@@ -93,35 +93,59 @@ const zoomFrame: Record<number, [number, number][]> = {
     [6, 5],
     [5, 6],
   ],
-  31: [[6, 6]],
-  32: [[6, 6]],
-  33: [[6, 6]],
-  34: [[6, 6]],
-  35: [[6, 6]],
-  36: [[6, 6]],
+  31: [
+    [6, 6],
+    [5, 7],
+    [7, 5],
+  ],
+  32: [
+    [6, 6],
+    [5, 7],
+    [7, 5],
+  ],
+  33: [
+    [6, 6],
+    [5, 7],
+    [7, 5],
+  ],
+  34: [
+    [6, 6],
+    [5, 7],
+    [7, 5],
+  ],
+  35: [
+    [6, 6],
+    [5, 7],
+    [7, 5],
+  ],
+  36: [
+    [6, 6],
+    [5, 7],
+    [7, 5],
+  ],
   37: [
-    [6, 7],
     [7, 6],
+    [6, 7],
   ],
   38: [
-    [6, 7],
     [7, 6],
+    [6, 7],
   ],
   39: [
-    [6, 7],
     [7, 6],
+    [6, 7],
   ],
   40: [
-    [6, 7],
     [7, 6],
+    [6, 7],
   ],
   41: [
-    [6, 7],
     [7, 6],
+    [6, 7],
   ],
   42: [
-    [6, 7],
     [7, 6],
+    [6, 7],
   ],
   43: [[7, 7]],
   44: [[7, 7]],
@@ -160,4 +184,5 @@ export const getMajorTemplate = (memberCount: number) => {
   return templates.map(([row, col]) => calcTemplate(memberCount, row, col))
 }
 
-export const isEqualTemplate = (a: GuideTemplate, b: GuideTemplate) => a.count === b.count && a.col === b.col && a.row === b.row
+export const isEqualTemplate = (a: GuideTemplate, b: GuideTemplate) =>
+  a.count === b.count && a.col === b.col && a.row === b.row

@@ -11,6 +11,8 @@ import throttle from 'lodash.throttle'
 import NumberPicker from '../components/NumberPicker'
 import BG_LIST from '~/constants/bg'
 import BgImg from '~/types/bgImge'
+import FRAME_LIST from '~/constants/frame'
+import Frame from '~/types/frame'
 
 type Props = {
   bgImg: BgImg | null
@@ -20,6 +22,8 @@ type Props = {
   onChangeSize: (v: number) => void
   opacity: number
   onChangeOpacity: (v: number) => void
+  frame: Frame | null
+  onChangeFrame: (frame: Frame | null) => void
 }
 
 const Background: React.FC<Props> = ({
@@ -30,6 +34,8 @@ const Background: React.FC<Props> = ({
   onChangeSize,
   opacity,
   onChangeOpacity,
+  frame: selectedFrame,
+  onChangeFrame,
 }) => {
   const [userScroll, setUserScroll] = useState(false)
   const [userUploadBgImg, setUserUploadBgImg] = useState<BgImg | null>(null)
@@ -262,6 +268,74 @@ const Background: React.FC<Props> = ({
                   )}
                 >
                   {bgImg.name}
+                </p>
+              </div>
+            )
+          })}
+          <div className="px-8" />
+        </div>
+      </div>
+      <hr className="h-0.5 w-11/12 bg-gray-200 rounded-full mx-auto my-6" />
+      <div className="w-full relative">
+        <h1 className="px-16">フレームを選択する（任意）</h1>
+        <div
+          className="flex flex-nowrap overflow-x-scroll w-full"
+          onScroll={() => setUserScroll(true)}
+        >
+          <div
+            className={c(
+              'absolute top-1/2 right-8 transform -translate-y-1/2 z-10 transition delay-300 duration-300',
+              userScroll ? 'translate-x-32' : '',
+            )}
+          >
+            <FontAwesomeIcon
+              icon={faAngleDoubleRight}
+              className="text-gray-700 animate-bounce-right rounded-full p-2 w-12 h-12"
+            />
+          </div>
+          <div className="px-8" />
+          {FRAME_LIST.map((frame) => {
+            const isSelected = frame.src === selectedFrame?.src
+            return (
+              <div
+                key={frame.src}
+                className={c(
+                  'flex flex-col items-center justify-center p-4 border-2 rounded-lg mx-2 mt-4 mb-12 transition relative',
+                  isSelected ? 'border-gray-400' : 'border-transparent',
+                )}
+              >
+                <button
+                  className={c(
+                    'transition rounded-lg overflow-hidden',
+                    !isSelected && 'hover:shadow-xl',
+                  )}
+                  style={{
+                    width: '240px',
+                    height: '135px',
+                  }}
+                  onClick={() => onChangeFrame(isSelected ? null : frame)}
+                  aria-pressed={isSelected}
+                >
+                  <Image
+                    key={frame.src}
+                    src={frame.src}
+                    alt={'背景画像 ' + frame.name}
+                    width="320px"
+                    height="180px"
+                    objectFit="cover"
+                    objectPosition="left"
+                    className="h-full"
+                  />
+                </button>
+                <p
+                  className={c(
+                    'text-center absolute top-full mt-4 transition transform',
+                    isSelected
+                      ? 'translate-y-0 opacity-100'
+                      : '-translate-y-8 opacity-0',
+                  )}
+                >
+                  {frame.name}
                 </p>
               </div>
             )

@@ -31,6 +31,21 @@ const STECKER_LIST: Stecker[] = [
     name: 'LGTM',
     type: 'template',
   },
+  {
+    src: '/stecker/window.png',
+    name: 'まど',
+    type: 'template',
+  },
+  {
+    src: '/stecker/mask.png',
+    name: 'マスク',
+    type: 'template',
+  },
+  {
+    src: '/stecker/news.png',
+    name: 'ニュース',
+    type: 'template',
+  },
 ]
 
 export default STECKER_LIST

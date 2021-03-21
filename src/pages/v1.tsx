@@ -13,6 +13,7 @@ import Background from '~/view/tabs/Background'
 import BgImg from '~/types/bgImge'
 import Decorator from '~/view/tabs/Decorator'
 import postShotData from '~/repository'
+import Frame from '~/types/frame'
 
 type PageType =
   | 'intro'
@@ -75,6 +76,8 @@ const Version1 = () => {
     height: number
   } | null>()
 
+  const [images, setImages] = useState<string[]>([])
+
   const handleTrimOk = () => {
     if (previewUrl == null) throw new Error()
 
@@ -121,8 +124,8 @@ const Version1 = () => {
       )
 
       if (file != null) {
-        await postShotData(file, rects)
-
+        const images = await postShotData(file, rects)
+        setImages(images)
         console.log(
           JSON.stringify(
             rects.map((rect) => ({
@@ -147,6 +150,7 @@ const Version1 = () => {
   }, [count])
 
   const [bgImg, setBgImg] = useState<BgImg | null>(null)
+  const [frame, setFrame] = useState<Frame | null>(null)
   const [bgSize, setBgSize] = useState(0.8)
   const [opacity, setOpacity] = useState(0.5)
 
@@ -216,6 +220,8 @@ const Version1 = () => {
                 onChangeSize={setBgSize}
                 opacity={opacity}
                 onChangeOpacity={setOpacity}
+                frame={frame}
+                onChangeFrame={setFrame}
               />
             ) : currentPageType === 'loading' ? (
               <div className="flex flex-col items-center justify-center pb-12 w-full">
@@ -242,8 +248,16 @@ const Version1 = () => {
           bgImg={bgImg}
           bgSize={bgSize}
           opacity={opacity}
+          frame={frame}
           onChangeBgSize={setBgSize}
           onChangeOpacity={setOpacity}
+          images={images}
+          containedList={containedList}
+          onChangeContainedList={(index: number) => {
+            const newContainedList = [...containedList]
+            newContainedList[index] = !newContainedList[index]
+            setContainerdList(newContainedList)
+          }}
         />
       ) : (
         // <div className="w-full h-full px-8 py-6">
@@ -256,7 +270,7 @@ const Version1 = () => {
         //           alt="背景画像"
         //           className="w-full object-contain border border-gray-500"
         //           style={{
-        //             transform: `scale(${bgSize})`,
+        //             transform: `scale(${bgImg})`,
         //             opacity: opacity,
         //           }}
         //         />
