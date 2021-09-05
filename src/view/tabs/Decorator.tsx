@@ -112,7 +112,11 @@ const Decorator: React.FC<Props> = ({
                     ])
                   }
                 >
-                  <img src={stecker.src} alt={stecker.name} />
+                  <img
+                    src={stecker.src}
+                    alt={stecker.name}
+                    className="pointer-events-none"
+                  />
                 </button>
               ))}
             </div>
@@ -227,7 +231,6 @@ const Decorator: React.FC<Props> = ({
                       return [...prev]
                     })
                   }}
-                  lockAspectRatio
                   className="hover:bg-gray-300 hover:bg-opacity-25 relative group rounded-md z-50"
                 >
                   <button
