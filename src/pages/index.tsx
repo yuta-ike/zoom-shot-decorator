@@ -8,12 +8,12 @@ const Index: React.FC = () => {
   // const [size, setSize] = useState<Size>({ width: 160, height: 90 })
 
   return (
-    <div className="text-red-400 p-4">
+    <div className="p-4 text-red-400">
       ホーム
       <div>{/* POS : ({pos.x}, {pos.y}) */}</div>
       <div>{/* SIZE: ({size.width}, {size.height}) */}</div>
       <div className="relative">
-        <img src="/example/zoom.jpg" alt="テスト画像" />
+        {/* <img src="/example/zoom.jpg" alt="テスト画像" /> */}
         {/* <Rnd
           position={pos}
           size={size}

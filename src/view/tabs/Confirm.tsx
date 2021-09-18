@@ -34,11 +34,9 @@ const Confirm: React.FC<Props> = ({
   const [filter, setFilter] = useState<Filter>('none')
   return (
     <div className={c(className, 'flex flex-col h-full')}>
-      <h1 className="my-4 flex-shrink-0">
-        集合写真に表示する人を選択してください
-      </h1>
+      <h1 className="flex-shrink-0 my-4">集合写真に含める人を選んでください</h1>
       <div
-        className="grid w-full gap-2 overflow-y-scroll relative"
+        className="relative grid w-full gap-2 overflow-y-scroll"
         style={{
           gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
         }}
@@ -59,7 +57,7 @@ const Confirm: React.FC<Props> = ({
             return (
               <button
                 key={index}
-                className="m-1 flex-shrink-0 overflow-hidden relative"
+                className="relative flex-shrink-0 m-1 overflow-hidden"
                 style={{ width: '200px', height: '112.5px' }}
                 aria-pressed={isSelected}
                 onClick={() => {
@@ -79,7 +77,7 @@ const Confirm: React.FC<Props> = ({
                     height="1rem"
                   />
                 </div>
-                <div className="absolute top-0 left-0 w-full h-full border-4 border-red-100 z-10" />
+                <div className="absolute top-0 left-0 z-10 w-full h-full border-4 border-red-100" />
                 <img
                   src={previewUrl}
                   alt="画像"
@@ -119,7 +117,7 @@ const Confirm: React.FC<Props> = ({
           }),
         )}
       </div>
-      <div className="flex-shrink-0 flex flex-col items-center w-full pt-4 mt-auto">
+      <div className="flex flex-col items-center flex-shrink-0 w-full pt-4 mt-auto">
         <div className="flex mb-8">
           <button
             className={c(
@@ -129,7 +127,7 @@ const Confirm: React.FC<Props> = ({
             onClick={() => setFilter(filter === 'checked' ? 'none' : 'checked')}
             aria-pressed={filter === 'checked'}
           >
-            <div className="w-6 h-6 text-white text-sm flex items-center justify-center rounded-full bg-green-500 mr-2">
+            <div className="flex items-center justify-center w-6 h-6 mr-2 text-sm text-white bg-green-500 rounded-full">
               <FontAwesomeIcon icon={faCheck} width="1rem" height="1rem" />
             </div>
             <span>{containedList.filter((x) => x).length}</span>
@@ -144,17 +142,17 @@ const Confirm: React.FC<Props> = ({
             }
             aria-pressed={filter === 'unchecked'}
           >
-            <div className="w-6 h-6 text-white text-sm flex items-center justify-center rounded-full bg-red-400 mr-2">
+            <div className="flex items-center justify-center w-6 h-6 mr-2 text-sm text-white bg-red-400 rounded-full">
               <FontAwesomeIcon icon={faMinus} width="1rem" height="1rem" />
             </div>
             <span>{containedList.filter((x) => !x).length}</span>
           </button>
         </div>
         <button
-          className="pl-4 pr-8 py-2 bg-pink-400 text-white rounded-md relative shadow-sm transition hover:shadow-lg"
+          className="relative py-2 pl-4 pr-8 text-white transition bg-pink-400 rounded-md shadow-sm hover:shadow-lg"
           onClick={goNext}
         >
-          OK <span className="animate-bounce-right absolute">→</span>
+          OK <span className="absolute animate-bounce-right">→</span>
         </button>
       </div>
     </div>

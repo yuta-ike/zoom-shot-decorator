@@ -1,5 +1,5 @@
 import { useRouter } from 'next/dist/client/router'
-import c from 'classnames'
+import Link from 'next/link'
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { Pos, Size } from '~/types/figure'
 import Range from '~/util/Range'
@@ -14,6 +14,7 @@ import BgImg from '~/types/bgImge'
 import Decorator from '~/view/tabs/Decorator'
 import postShotData from '~/repository'
 import Frame from '~/types/frame'
+import Timer from '~/view/components/Timer'
 
 type PageType =
   | 'intro'
@@ -41,11 +42,14 @@ const Version1 = () => {
     PATH.find((path) => router.query.mode === path) ?? PATH[0]
 
   const goNext = () => {
-    const currentIndex =
-      PATH.findIndex((path) => router.query.mode === path) ?? 0
-    router.push(`/v1?mode=${PATH[currentIndex + 1]}`, undefined, {
-      shallow: true,
-    })
+    const currentIndex = PATH.findIndex((path) => router.query.mode === path)
+    router.push(
+      `/v1?mode=${PATH[currentIndex < 0 ? 1 : currentIndex + 1]}`,
+      undefined,
+      {
+        shallow: true,
+      },
+    )
   }
 
   const [file, setFile] = useState<File | null>(null)
@@ -143,12 +147,40 @@ const Version1 = () => {
   const [bgSize, setBgSize] = useState(0.8)
   const [opacity, setOpacity] = useState(0.5)
 
+  useEffect(() => {
+    if (currentPageType === 'loading' && images.length > 0) {
+      goNext()
+    }
+  }, [images])
+
   return (
     <article className="flex items-stretch h-screen font-sans text-white bg-blue-400">
       {currentPageType !== 'decorate' ? (
         <>
-          <div className="flex flex-col items-end justify-center px-32 text-xl">
-            <h2>ZOOM-DECOへようこそ！</h2>
+          <div
+            className="flex flex-col items-end justify-center px-16 text-xl leading-loose"
+            style={{ width: '480px' }}
+          >
+            {currentPageType === 'intro' ? (
+              <h2>ZOOM-DECOへようこそ！</h2>
+            ) : currentPageType === 'upload' ? (
+              <div>
+                右のボタンから、
+                <br />
+                デコレーションしたいZOOMの集合写真を選択してください
+              </div>
+            ) : currentPageType === 'count' ? (
+              <div>集合写真に写っている人の人数を入力してください</div>
+            ) : currentPageType === 'adjust' ? (
+              <div>赤い枠を移動して、集合写真の枠に合わせてください</div>
+            ) : currentPageType === 'confirm' ? (
+              <div>集合写真に含める人を選んでください</div>
+            ) : currentPageType === 'bg' ? (
+              <div>
+                写真の背景とフレームを選択し、
+                <span className="underline">OKをクリック</span>してください
+              </div>
+            ) : null}
           </div>
           <section className="flex flex-col items-start justify-center flex-1 w-full min-w-0 py-8 my-8 text-black bg-gray-100 shadow-xl rounded-l-3xl">
             {currentPageType === 'intro' ? (
@@ -225,10 +257,34 @@ const Version1 = () => {
                     </div>
                   ))}
                 </div>
-                <button onClick={goNext}>次</button>
+                <p className="mt-4">画像を処理しています。</p>
+                <p className="mt-8 text-sm text-gray-500">
+                  1分経っても画面が遷移しない場合は
+                  <button
+                    className="inline text-blue-600 underline"
+                    onClick={goNext}
+                  >
+                    こちら
+                  </button>
+                  をクリックしてください
+                </p>
+                <p className="mt-2">
+                  <Timer>
+                    {(time) => (
+                      <p className="text-sm text-gray-500">{time}秒</p>
+                    )}
+                  </Timer>
+                </p>
               </div>
             ) : (
-              <div>エラーが発生しました。</div>
+              <div className="m-16">
+                エラーが発生しました
+                <br />
+                <Link href="/v1">
+                  {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                  <a className="text-blue-500 underline">ホームへ戻る</a>
+                </Link>
+              </div>
             )}
           </section>
         </>
@@ -275,7 +331,14 @@ const Version1 = () => {
         //     )}
         //   </div>
         // </div>
-        <div>エラー</div>
+        <div className="m-16">
+          エラーが発生しました
+          <br />
+          <Link href="/v1">
+            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+            <a className="text-blue-500 undefline">ホームへ戻る</a>
+          </Link>
+        </div>
       )}
     </article>
   )

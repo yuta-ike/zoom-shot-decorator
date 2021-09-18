@@ -80,7 +80,7 @@ const Background: React.FC<Props> = ({
     <div className="flex flex-col items-start justify-start w-full overflow-y-scroll">
       <div className="px-16">
         <div className="flex items-center mb-4">
-          <h1>自分でアップロードした画像</h1>
+          <h1>背景を選択</h1>
           <label className="relative flex my-4 ml-4 cursor-pointer focus-within:outline-black">
             <input
               type="file"
@@ -101,7 +101,7 @@ const Background: React.FC<Props> = ({
           </label>
         </div>
         {userUploadBgImg == null ? (
-          <label className="flex text-white transition rounded-md shadow-sm cursor-pointer hover:shadow-md focus-within:outline-black">
+          <label className="flex ml-6 text-white transition rounded-md shadow-sm cursor-pointer hover:shadow-md focus-within:outline-black">
             <input
               type="file"
               className="absolute w-1 h-1 opacity-0"
@@ -204,9 +204,8 @@ const Background: React.FC<Props> = ({
           </div>
         )}
       </div>
-      <hr className="h-0.5 w-11/12 bg-gray-200 rounded-full mx-auto my-6" />
+      <hr className="h-0.5 w-11/12 bg-gray-200 rounded-full mx-auto mt-2" />
       <div className="relative w-full">
-        <h1 className="px-16">テンプレート背景から選択する</h1>
         <div
           className="flex w-full overflow-x-scroll flex-nowrap"
           onScroll={() => setUserScroll(true)}
@@ -272,7 +271,7 @@ const Background: React.FC<Props> = ({
           <div className="px-8" />
         </div>
       </div>
-      <hr className="h-0.5 w-11/12 bg-gray-200 rounded-full mx-auto my-6" />
+      <hr className="h-0.5 w-11/12 bg-gray-200 rounded-full mx-auto mb-4" />
       <div className="relative w-full">
         <h1 className="px-16">フレームを選択する（任意）</h1>
         <div
@@ -342,7 +341,7 @@ const Background: React.FC<Props> = ({
       </div>
       {/* <div className="se"> */}
       <button
-        className="relative self-center py-2 pl-4 pr-8 mt-8 text-white transition bg-pink-400 rounded-md shadow-sm hover:shadow-lg disabled:bg-gray-400"
+        className="relative self-center py-2 pl-4 pr-8 text-white transition bg-pink-400 rounded-md shadow-sm hover:shadow-lg disabled:bg-gray-400"
         onClick={goNext}
         disabled={selectedBgImg == null}
       >
