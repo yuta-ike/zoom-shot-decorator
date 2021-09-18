@@ -80,7 +80,7 @@ const Decorator: React.FC<Props> = ({
             </div>
           </div>
           <div className="flex flex-col items-center flex-shrink-0 py-2 pr-8 mr-8 space-y-3 border-r border-gray-400">
-            <div className="text-sm text-gray-500">編集方法</div>
+            <div className="text-sm text-gray-500">移動方法</div>
             <div className="flex flex-col items-center space-y-1">
               <div
                 className={c(
