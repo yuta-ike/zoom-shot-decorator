@@ -84,7 +84,6 @@ const Version1 = () => {
     const imgWidth = previewRef.current?.clientWidth ?? 1
     const imgHeight = previewRef.current?.clientHeight ?? 1
     setImgSize({ width: imgWidth, height: imgHeight })
-    console.log(imgWidth, imgHeight)
 
     const rectWidth = parseInt(size.width.toString()) / template.col
     const rectHeight = parseInt(size.height.toString()) / template.row
@@ -126,16 +125,6 @@ const Version1 = () => {
       if (file != null) {
         const images = await postShotData(file, rects)
         setImages(images)
-        console.log(
-          JSON.stringify(
-            rects.map((rect) => ({
-              x: rect[0],
-              y: rect[1],
-              w: rect[2],
-              h: rect[3],
-            })),
-          ),
-        )
       }
     }
 
@@ -155,13 +144,13 @@ const Version1 = () => {
   const [opacity, setOpacity] = useState(0.5)
 
   return (
-    <article className="flex items-stretch h-screen bg-blue-400 text-white font-sans">
+    <article className="flex items-stretch h-screen font-sans text-white bg-blue-400">
       {currentPageType !== 'decorate' ? (
         <>
-          <div className="flex flex-col justify-center items-end px-32 text-xl">
-            <h2>サービス名へようこそ！</h2>
+          <div className="flex flex-col items-end justify-center px-32 text-xl">
+            <h2>ZOOM-DECOへようこそ！</h2>
           </div>
-          <section className="flex flex-col flex-1 items-start justify-center bg-gray-100 rounded-l-3xl shadow-xl my-8 text-black py-8 w-full min-w-0">
+          <section className="flex flex-col items-start justify-center flex-1 w-full min-w-0 py-8 my-8 text-black bg-gray-100 shadow-xl rounded-l-3xl">
             {currentPageType === 'intro' ? (
               <Intro goNext={goNext} className="px-32" />
             ) : currentPageType === 'upload' ? (
@@ -209,7 +198,7 @@ const Version1 = () => {
                 size={size}
                 imgSize={imgSize}
                 goNext={goNext}
-                className="px-32 w-full h-full"
+                className="w-full h-full px-32"
               />
             ) : currentPageType === 'bg' ? (
               <Background
@@ -224,12 +213,12 @@ const Version1 = () => {
                 onChangeFrame={setFrame}
               />
             ) : currentPageType === 'loading' ? (
-              <div className="flex flex-col items-center justify-center pb-12 w-full">
+              <div className="flex flex-col items-center justify-center w-full pb-12">
                 <div className="flex">
                   {'loading'.split('').map((str, i) => (
                     <div
                       key={i}
-                      className="animate-bounce mx-2 text-lg"
+                      className="mx-2 text-lg animate-bounce"
                       style={{ animationDelay: `${i * 0.1}s` }}
                     >
                       {str}
@@ -261,14 +250,14 @@ const Version1 = () => {
         />
       ) : (
         // <div className="w-full h-full px-8 py-6">
-        //   <div className="bg-white rounded-3xl shadow-xl w-full h-full p-4 flex">
-        //     <div className="w-96 flex-shrink-0">AAA</div>
+        //   <div className="flex w-full h-full p-4 bg-white shadow-xl rounded-3xl">
+        //     <div className="flex-shrink-0 w-96">AAA</div>
         //     {bgImg?.type === 'upload' ? (
         //       <div className="flex flex-col items-center justify-center w-full">
         //         <img
         //           src={bgImg?.src}
         //           alt="背景画像"
-        //           className="w-full object-contain border border-gray-500"
+        //           className="object-contain w-full border border-gray-500"
         //           style={{
         //             transform: `scale(${bgImg})`,
         //             opacity: opacity,
@@ -280,7 +269,7 @@ const Version1 = () => {
         //         <img
         //           src={bgImg?.src}
         //           alt="背景画像"
-        //           className="w-full object-contain border border-gray-500"
+        //           className="object-contain w-full border border-gray-500"
         //         />
         //       </div>
         //     )}

@@ -45,7 +45,6 @@ const NumberPicker: React.FC<Props> = ({
         (ref.current.scrollHeight - ref.current.clientHeight)
 
       const newValue = Math.round((max - min) * scrollRate) + min
-      console.log(newValue)
       if (value !== newValue) {
         onChange(newValue)
       }
@@ -70,21 +69,21 @@ const NumberPicker: React.FC<Props> = ({
         ignored && 'pointer-events-none',
       )}
     >
-      <div className="flex flex-row items-center z-10">
+      <div className="z-10 flex flex-row items-center">
         <button
-          className="m-4 bg-red-200 text-white w-6 h-6 flex items-center justify-center rounded-md text-sm hover:bg-red-300 transition p-1"
+          className="flex items-center justify-center w-6 h-6 p-1 m-4 text-sm text-white transition bg-red-200 rounded-md hover:bg-red-300"
           onClick={handleDecrement}
         >
           <FontAwesomeIcon icon={faMinus} />
         </button>
         <div
-          className="h-36 overflow-y-scroll overflow-x-hidden relative scrollbar-none group overscroll-none"
+          className="relative overflow-x-hidden overflow-y-scroll h-36 scrollbar-none group overscroll-none"
           onScroll={handleScroll}
           ref={ref}
         >
-          <div className="font- bg-red-300 sticky top-0 w-36 h-36 flex items-center justify-center rounded-full pie">
+          <div className="sticky top-0 flex items-center justify-center bg-red-300 rounded-full font- w-36 h-36 pie">
             <div
-              className="absolute top-0 lef-0 w-full h-full bg-gray-100 rounded-full"
+              className="absolute top-0 w-full h-full bg-gray-100 rounded-full lef-0"
               style={{
                 background:
                   'linear-gradient(transparent, transparent 50%, #E5E7EB 50%, #E5E7EB',
@@ -92,7 +91,7 @@ const NumberPicker: React.FC<Props> = ({
               }}
             />
             <div
-              className="absolute top-0 lef-0 w-full h-full bg-gray-100 rounded-full"
+              className="absolute top-0 w-full h-full bg-gray-100 rounded-full lef-0"
               style={{
                 background:
                   rate < 0.5
@@ -101,7 +100,7 @@ const NumberPicker: React.FC<Props> = ({
                 transform: `rotate(${360 * rate - 90}deg)`,
               }}
             />
-            <div className="bg-gray-100 w-24 h-24 rounded-full flex items-center justify-center z-20 text-xl transition group-hover:shadow-lg">
+            <div className="z-20 flex items-center justify-center w-24 h-24 text-xl transition bg-gray-100 rounded-full group-hover:shadow-lg">
               {labelRender(value)}
             </div>
           </div>
@@ -111,14 +110,14 @@ const NumberPicker: React.FC<Props> = ({
           />
         </div>
         <button
-          className="m-4 bg-red-200 text-white w-6 h-6 flex items-center justify-center rounded-md hover:bg-red-300 transition p-1"
+          className="flex items-center justify-center w-6 h-6 p-1 m-4 text-white transition bg-red-200 rounded-md hover:bg-red-300"
           onClick={handleIncrement}
         >
           <FontAwesomeIcon icon={faPlus} />
         </button>
       </div>
-      <p className="text-xs mt-2 text-gray-400 transition delay-200 duration-300 transform -translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
-        グラフ上でスクロールしてね
+      <p className="mt-2 text-xs text-gray-400 transition duration-300 delay-200 transform -translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
+        その場でスクロールしてね
       </p>
     </div>
   )

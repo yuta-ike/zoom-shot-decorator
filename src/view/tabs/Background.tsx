@@ -65,7 +65,7 @@ const Background: React.FC<Props> = ({
 
   const ref = useRef<HTMLDivElement>(null)
 
-  const handleScroll = throttle((_) => {
+  const handleScroll = throttle(() => {
     if (ref.current != null) {
       const scrollRate =
         ref.current.scrollTop /
@@ -76,18 +76,15 @@ const Background: React.FC<Props> = ({
     }
   })
 
-  console.log({ width: `${320 * size}x`, height: `${180 * size}px` })
-  console.log(size)
-
   return (
-    <div className="flex flex-col w-full items-start justify-start">
+    <div className="flex flex-col items-start justify-start w-full overflow-y-scroll">
       <div className="px-16">
         <div className="flex items-center mb-4">
           <h1>自分でアップロードした画像</h1>
-          <label className="ml-4 my-4 focus-within:outline-black cursor-pointer relative flex">
+          <label className="relative flex my-4 ml-4 cursor-pointer focus-within:outline-black">
             <input
               type="file"
-              className="w-1 h-1 opacity-0 absolute"
+              className="absolute w-1 h-1 opacity-0"
               accept="image/*"
               onChange={handleImageUpload}
               disabled={selectedBgImg?.type !== 'upload'}
@@ -104,15 +101,15 @@ const Background: React.FC<Props> = ({
           </label>
         </div>
         {userUploadBgImg == null ? (
-          <label className="rounded-md text-white shadow-sm hover:shadow-md transition cursor-pointer focus-within:outline-black flex">
+          <label className="flex text-white transition rounded-md shadow-sm cursor-pointer hover:shadow-md focus-within:outline-black">
             <input
               type="file"
-              className="w-1 h-1 opacity-0 absolute"
+              className="absolute w-1 h-1 opacity-0"
               accept="image/*"
               onChange={handleImageUpload}
             />
             <div
-              className="bg-gray-200 text-gray-400 rounded-md border-2 border-gray-400 flex flex-col items-center justify-center transition"
+              className="flex flex-col items-center justify-center text-gray-400 transition bg-gray-200 border-2 border-gray-400 rounded-md"
               style={{ width: '240px', height: '135px' }}
             >
               <FontAwesomeIcon icon={faPlus} className="w-8 h-8 mt-4 mb-2" />
@@ -122,7 +119,7 @@ const Background: React.FC<Props> = ({
         ) : (
           <div className="flex">
             <div
-              className="overflow-y-scroll h-44 scrollbar-none overflow-hidden"
+              className="overflow-hidden overflow-y-scroll h-44 scrollbar-none"
               onScroll={handleScroll}
               ref={ref}
             >
@@ -208,21 +205,21 @@ const Background: React.FC<Props> = ({
         )}
       </div>
       <hr className="h-0.5 w-11/12 bg-gray-200 rounded-full mx-auto my-6" />
-      <div className="w-full relative">
+      <div className="relative w-full">
         <h1 className="px-16">テンプレート背景から選択する</h1>
         <div
-          className="flex flex-nowrap overflow-x-scroll w-full"
+          className="flex w-full overflow-x-scroll flex-nowrap"
           onScroll={() => setUserScroll(true)}
         >
           <div
             className={c(
               'absolute top-1/2 right-8 transform -translate-y-1/2 z-10 transition delay-300 duration-300',
-              userScroll ? 'translate-x-32' : '',
+              userScroll ? 'translate-x-32 hidden' : '',
             )}
           >
             <FontAwesomeIcon
               icon={faAngleDoubleRight}
-              className="text-gray-700 animate-bounce-right rounded-full p-2 w-12 h-12"
+              className="w-12 h-12 p-2 text-gray-700 rounded-full animate-bounce-right"
             />
           </div>
           <div className="px-8" />
@@ -276,21 +273,21 @@ const Background: React.FC<Props> = ({
         </div>
       </div>
       <hr className="h-0.5 w-11/12 bg-gray-200 rounded-full mx-auto my-6" />
-      <div className="w-full relative">
+      <div className="relative w-full">
         <h1 className="px-16">フレームを選択する（任意）</h1>
         <div
-          className="flex flex-nowrap overflow-x-scroll w-full"
+          className="flex w-full overflow-x-scroll flex-nowrap"
           onScroll={() => setUserScroll(true)}
         >
           <div
             className={c(
               'absolute top-1/2 right-8 transform -translate-y-1/2 z-10 transition delay-300 duration-300',
-              userScroll ? 'translate-x-32' : '',
+              userScroll ? 'translate-x-32 hidden' : '',
             )}
           >
             <FontAwesomeIcon
               icon={faAngleDoubleRight}
-              className="text-gray-700 animate-bounce-right rounded-full p-2 w-12 h-12"
+              className="w-12 h-12 p-2 text-gray-700 rounded-full animate-bounce-right"
             />
           </div>
           <div className="px-8" />
@@ -345,12 +342,12 @@ const Background: React.FC<Props> = ({
       </div>
       {/* <div className="se"> */}
       <button
-        className="self-center mt-8 pl-4 pr-8 py-2 bg-pink-400 text-white rounded-md relative shadow-sm transition hover:shadow-lg disabled:bg-gray-400"
+        className="relative self-center py-2 pl-4 pr-8 mt-8 text-white transition bg-pink-400 rounded-md shadow-sm hover:shadow-lg disabled:bg-gray-400"
         onClick={goNext}
         disabled={selectedBgImg == null}
       >
         OK
-        <span className="animate-bounce-right absolute inline-block">→</span>
+        <span className="absolute inline-block animate-bounce-right">→</span>
       </button>
       {/* </div> */}
     </div>

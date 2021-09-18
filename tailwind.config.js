@@ -2,6 +2,7 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
+  mode: 'jit',
   purge: {
     content: ['./src/**/*.{js,ts,jsx,tsx}'],
     options: {
@@ -32,6 +33,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        accent: '#FCA5A5',
         black: '#333333',
       },
       boxShadow: {

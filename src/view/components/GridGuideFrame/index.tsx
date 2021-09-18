@@ -9,7 +9,6 @@ type Props = {
 }
 
 const GridGuideFrame: React.FC<Props> = ({ template, itemClassName }) => {
-  console.log(template)
   return (
     <div
       className={`grid grid-cols-${template.col * 2} grid-rows-${

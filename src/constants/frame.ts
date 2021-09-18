@@ -7,8 +7,13 @@ const FRAME_LIST: Frame[] = [
     type: 'template',
   },
   {
+    src: '/bg/img5.png',
+    name: 'ニュース',
+    type: 'template',
+  },
+  {
     src: '/bg/curtain.png',
-    name: '街',
+    name: '舞台',
     type: 'template',
   },
   {
