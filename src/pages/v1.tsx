@@ -151,7 +151,7 @@ const Version1 = () => {
     if (currentPageType === 'loading' && images.length > 0) {
       goNext()
     }
-  }, [images])
+  }, [images, currentPageType])
 
   return (
     <article className="flex items-stretch h-screen font-sans text-white bg-blue-400">

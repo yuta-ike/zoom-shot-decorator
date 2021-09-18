@@ -1,31 +1,13 @@
 import React, { useState } from 'react'
-// import { Rnd } from 'react-rnd'
-// import { Pos, Size } from '~/types/figure'
-// import GridGuideFrame from '~/view/components/GridGuideFrame'
+import Link from 'next/link'
 
 const Index: React.FC = () => {
-  // const [pos, setPos] = useState<Pos>({ x: 0, y: 0 })
-  // const [size, setSize] = useState<Size>({ width: 160, height: 90 })
-
   return (
     <div className="p-4 text-red-400">
-      ホーム
-      <div>{/* POS : ({pos.x}, {pos.y}) */}</div>
-      <div>{/* SIZE: ({size.width}, {size.height}) */}</div>
+      <Link href="/v1">
+        <a className="text-blue-400 underline">ZOOM-DECOを使う</a>
+      </Link>
       <div className="relative">
-        {/* <img src="/example/zoom.jpg" alt="テスト画像" /> */}
-        {/* <Rnd
-          position={pos}
-          size={size}
-          onDragStop={(_, pos) => setPos(pos)}
-          onResizeStop={(_, __, ref, ___, pos) => {
-            setPos(pos)
-            setSize(ref.style)
-          }}
-          lockAspectRatio
-        >
-          <GridGuideFrame count={9} />
-        </Rnd> */}
         <div className="grid-cols-1" />
         <div className="grid-cols-2" />
         <div className="grid-cols-3" />
